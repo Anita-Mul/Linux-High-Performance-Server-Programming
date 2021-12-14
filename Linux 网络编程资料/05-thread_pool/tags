@@ -1,0 +1,77 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+CC	makefile	/^CC = gcc$/;"	m
+CFLAGS	makefile	/^CFLAGS = -lpthread -m32 -Wall -g$/;"	m
+DEFAULT_THREAD_VARY	threadpool.c	13;"	d	file:
+DEFAULT_TIME	threadpool.c	11;"	d	file:
+MIN_WAIT_TASK_NUM	threadpool.c	12;"	d	file:
+__THREADPOOL_H_	threadpool.h	2;"	d
+__anon1::arg	threadpool.c	/^    void *arg;                          \/* 上面函数的参数 *\/$/;"	m	struct:__anon1	file:	access:public
+__anon1::function	threadpool.c	/^    void *(*function)(void *);          \/* 函数指针，回调函数 *\/$/;"	m	struct:__anon1	file:	access:public
+adjust_thread	threadpool.c	/^void *adjust_thread(void *threadpool)$/;"	f	signature:(void *threadpool)
+adjust_thread	threadpool.c	/^void *adjust_thread(void *threadpool);$/;"	p	file:	signature:(void *threadpool)
+adjust_tid	threadpool.c	/^    pthread_t adjust_tid;               \/* 存管理线程tid *\/$/;"	m	struct:threadpool_t	file:	access:public
+arg	threadpool.c	/^    void *arg;                          \/* 上面函数的参数 *\/$/;"	m	struct:__anon1	file:	access:public
+busy_thr_num	threadpool.c	/^    int busy_thr_num;                   \/* 忙状态线程个数 *\/$/;"	m	struct:threadpool_t	file:	access:public
+false	threadpool.c	15;"	d	file:
+function	threadpool.c	/^    void *(*function)(void *);          \/* 函数指针，回调函数 *\/$/;"	m	struct:__anon1	file:	access:public
+is_thread_alive	threadpool.c	/^int is_thread_alive(pthread_t tid)$/;"	f	signature:(pthread_t tid)
+is_thread_alive	threadpool.c	/^int is_thread_alive(pthread_t tid);$/;"	p	file:	signature:(pthread_t tid)
+live_thr_num	threadpool.c	/^    int live_thr_num;                   \/* 当前存活线程个数 *\/$/;"	m	struct:threadpool_t	file:	access:public
+lock	threadpool.c	/^    pthread_mutex_t lock;               \/* 用于锁住本结构体 *\/    $/;"	m	struct:threadpool_t	file:	access:public
+main	threadpool.c	/^int main(void)$/;"	f	signature:(void)
+max_thr_num	threadpool.c	/^    int max_thr_num;                    \/* 线程池最大线程数 *\/$/;"	m	struct:threadpool_t	file:	access:public
+min_thr_num	threadpool.c	/^    int min_thr_num;                    \/* 线程池最小线程数 *\/$/;"	m	struct:threadpool_t	file:	access:public
+process	threadpool.c	/^void *process(void *arg)$/;"	f	signature:(void *arg)
+queue_front	threadpool.c	/^    int queue_front;                    \/* task_queue队头下标 *\/$/;"	m	struct:threadpool_t	file:	access:public
+queue_max_size	threadpool.c	/^    int queue_max_size;                 \/* task_queue队列可容纳任务数上限 *\/$/;"	m	struct:threadpool_t	file:	access:public
+queue_not_empty	threadpool.c	/^    pthread_cond_t queue_not_empty;     \/* 任务队列里不为空时，通知等待任务的线程 *\/$/;"	m	struct:threadpool_t	file:	access:public
+queue_not_full	threadpool.c	/^    pthread_cond_t queue_not_full;      \/* 当任务队列满时，添加任务的线程阻塞，等待此条件变量 *\/$/;"	m	struct:threadpool_t	file:	access:public
+queue_rear	threadpool.c	/^    int queue_rear;                     \/* task_queue队尾下标 *\/$/;"	m	struct:threadpool_t	file:	access:public
+queue_size	threadpool.c	/^    int queue_size;                     \/* task_queue队中实际任务数 *\/$/;"	m	struct:threadpool_t	file:	access:public
+shutdown	threadpool.c	/^    int shutdown;                       \/* 标志位，线程池使用状态，true或false *\/$/;"	m	struct:threadpool_t	file:	access:public
+src	makefile	/^src = $(wildcard *.c)$/;"	m
+targets	makefile	/^targets = $(patsubst %.c, %, $(src))$/;"	m
+task_queue	threadpool.c	/^    threadpool_task_t *task_queue;      \/* 任务队列(数组首地址) *\/$/;"	m	struct:threadpool_t	file:	access:public
+thread_counter	threadpool.c	/^    pthread_mutex_t thread_counter;     \/* 记录忙状态线程个数de琐 -- busy_thr_num *\/$/;"	m	struct:threadpool_t	file:	access:public
+threadpool_add	threadpool.c	/^int threadpool_add(threadpool_t *pool, void*(*function)(void *arg), void *arg)$/;"	f	signature:(threadpool_t *pool, void*(*function)(void *arg), void *arg)
+threadpool_add	threadpool.h	/^int threadpool_add(threadpool_t *pool, void*(*function)(void *arg), void *arg);$/;"	p	signature:(threadpool_t *pool, void*(*function)(void *arg), void *arg)
+threadpool_all_threadnum	threadpool.c	/^int threadpool_all_threadnum(threadpool_t *pool)$/;"	f	signature:(threadpool_t *pool)
+threadpool_all_threadnum	threadpool.h	/^int threadpool_all_threadnum(threadpool_t *pool);$/;"	p	signature:(threadpool_t *pool)
+threadpool_busy_threadnum	threadpool.c	/^int threadpool_busy_threadnum(threadpool_t *pool)$/;"	f	signature:(threadpool_t *pool)
+threadpool_busy_threadnum	threadpool.h	/^int threadpool_busy_threadnum(threadpool_t *pool);$/;"	p	signature:(threadpool_t *pool)
+threadpool_create	threadpool.c	/^threadpool_t *threadpool_create(int min_thr_num, int max_thr_num, int queue_max_size)$/;"	f	signature:(int min_thr_num, int max_thr_num, int queue_max_size)
+threadpool_create	threadpool.h	/^threadpool_t *threadpool_create(int min_thr_num, int max_thr_num, int queue_max_size);$/;"	p	signature:(int min_thr_num, int max_thr_num, int queue_max_size)
+threadpool_destroy	threadpool.c	/^int threadpool_destroy(threadpool_t *pool)$/;"	f	signature:(threadpool_t *pool)
+threadpool_destroy	threadpool.h	/^int threadpool_destroy(threadpool_t *pool);$/;"	p	signature:(threadpool_t *pool)
+threadpool_free	threadpool.c	/^int threadpool_free(threadpool_t *pool)$/;"	f	signature:(threadpool_t *pool)
+threadpool_free	threadpool.c	/^int threadpool_free(threadpool_t *pool);$/;"	p	file:	signature:(threadpool_t *pool)
+threadpool_t	threadpool.c	/^struct threadpool_t {$/;"	s	file:
+threadpool_t	threadpool.h	/^typedef struct threadpool_t threadpool_t;$/;"	t	typeref:struct:threadpool_t
+threadpool_t::adjust_tid	threadpool.c	/^    pthread_t adjust_tid;               \/* 存管理线程tid *\/$/;"	m	struct:threadpool_t	file:	access:public
+threadpool_t::busy_thr_num	threadpool.c	/^    int busy_thr_num;                   \/* 忙状态线程个数 *\/$/;"	m	struct:threadpool_t	file:	access:public
+threadpool_t::live_thr_num	threadpool.c	/^    int live_thr_num;                   \/* 当前存活线程个数 *\/$/;"	m	struct:threadpool_t	file:	access:public
+threadpool_t::lock	threadpool.c	/^    pthread_mutex_t lock;               \/* 用于锁住本结构体 *\/    $/;"	m	struct:threadpool_t	file:	access:public
+threadpool_t::max_thr_num	threadpool.c	/^    int max_thr_num;                    \/* 线程池最大线程数 *\/$/;"	m	struct:threadpool_t	file:	access:public
+threadpool_t::min_thr_num	threadpool.c	/^    int min_thr_num;                    \/* 线程池最小线程数 *\/$/;"	m	struct:threadpool_t	file:	access:public
+threadpool_t::queue_front	threadpool.c	/^    int queue_front;                    \/* task_queue队头下标 *\/$/;"	m	struct:threadpool_t	file:	access:public
+threadpool_t::queue_max_size	threadpool.c	/^    int queue_max_size;                 \/* task_queue队列可容纳任务数上限 *\/$/;"	m	struct:threadpool_t	file:	access:public
+threadpool_t::queue_not_empty	threadpool.c	/^    pthread_cond_t queue_not_empty;     \/* 任务队列里不为空时，通知等待任务的线程 *\/$/;"	m	struct:threadpool_t	file:	access:public
+threadpool_t::queue_not_full	threadpool.c	/^    pthread_cond_t queue_not_full;      \/* 当任务队列满时，添加任务的线程阻塞，等待此条件变量 *\/$/;"	m	struct:threadpool_t	file:	access:public
+threadpool_t::queue_rear	threadpool.c	/^    int queue_rear;                     \/* task_queue队尾下标 *\/$/;"	m	struct:threadpool_t	file:	access:public
+threadpool_t::queue_size	threadpool.c	/^    int queue_size;                     \/* task_queue队中实际任务数 *\/$/;"	m	struct:threadpool_t	file:	access:public
+threadpool_t::shutdown	threadpool.c	/^    int shutdown;                       \/* 标志位，线程池使用状态，true或false *\/$/;"	m	struct:threadpool_t	file:	access:public
+threadpool_t::task_queue	threadpool.c	/^    threadpool_task_t *task_queue;      \/* 任务队列(数组首地址) *\/$/;"	m	struct:threadpool_t	file:	access:public
+threadpool_t::thread_counter	threadpool.c	/^    pthread_mutex_t thread_counter;     \/* 记录忙状态线程个数de琐 -- busy_thr_num *\/$/;"	m	struct:threadpool_t	file:	access:public
+threadpool_t::threads	threadpool.c	/^    pthread_t *threads;                 \/* 存放线程池中每个线程的tid。数组 *\/$/;"	m	struct:threadpool_t	file:	access:public
+threadpool_t::wait_exit_thr_num	threadpool.c	/^    int wait_exit_thr_num;              \/* 要销毁的线程个数 *\/$/;"	m	struct:threadpool_t	file:	access:public
+threadpool_task_t	threadpool.c	/^} threadpool_task_t;                    \/* 各子线程任务结构体 *\/$/;"	t	typeref:struct:__anon1	file:
+threadpool_thread	threadpool.c	/^void *threadpool_thread(void *threadpool)$/;"	f	signature:(void *threadpool)
+threadpool_thread	threadpool.c	/^void *threadpool_thread(void *threadpool);$/;"	p	file:	signature:(void *threadpool)
+threads	threadpool.c	/^    pthread_t *threads;                 \/* 存放线程池中每个线程的tid。数组 *\/$/;"	m	struct:threadpool_t	file:	access:public
+true	threadpool.c	14;"	d	file:
+wait_exit_thr_num	threadpool.c	/^    int wait_exit_thr_num;              \/* 要销毁的线程个数 *\/$/;"	m	struct:threadpool_t	file:	access:public

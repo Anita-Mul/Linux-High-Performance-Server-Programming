@@ -9,11 +9,16 @@
 #include <string.h>
 
 /*
-int listen(int socket, int backlog) {
-    
-}
+socket被命名之后，还不能马上接受客户连接
+我们需要使用如下系统调用来创建一个监听队列以存放待处理的客户连接
+
+socket 指定被监听的 socket
+backlog 参数提示内核监听队列的最大长度【5】
+int listen(int socket, int backlog) {}
 */
+
 static bool stop = false;
+/*SIGTERM信号的处理函数，触发时结束主程序中的循环*/
 static void handle_term( int sig )
 {
     stop = true;
