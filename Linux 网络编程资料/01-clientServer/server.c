@@ -23,40 +23,42 @@ int main(int argc, char *argv[])
     int ret, i;
     char buf[BUFSIZ], client_IP[1024];
 
-    struct sockaddr_in serv_addr, clit_addr;  // ¶¨Òå·şÎñÆ÷µØÖ·½á¹¹ ºÍ ¿Í»§¶ËµØÖ·½á¹¹
-    socklen_t clit_addr_len;				  // ¿Í»§¶ËµØÖ·½á¹¹´óĞ¡
+    struct sockaddr_in serv_addr, clit_addr;  // å®šä¹‰æœåŠ¡å™¨åœ°å€ç»“æ„ å’Œ å®¢æˆ·ç«¯åœ°å€ç»“æ„
+    socklen_t clit_addr_len;				  // å®¢æˆ·ç«¯åœ°å€ç»“æ„å¤§å°
 
-    serv_addr.sin_family = AF_INET;				// IPv4
-    serv_addr.sin_port = htons(SERV_PORT);		// ×ªÎªÍøÂç×Ö½ÚĞòµÄ ¶Ë¿ÚºÅ
-    serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);	// »ñÈ¡±¾»úÈÎÒâÓĞĞ§IP
+    serv_addr.sin_family = AF_INET;				    // IPv4
+    serv_addr.sin_port = htons(SERV_PORT);		    // è½¬ä¸ºç½‘ç»œå­—èŠ‚åºçš„ç«¯å£å·
+    serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);	// è·å–æœ¬æœºä»»æ„æœ‰æ•ˆIP
 
-    lfd = socket(AF_INET, SOCK_STREAM, 0);		//´´½¨Ò»¸ö socket
+    // IPv4 æµ å¦‚æœæ˜¯æµé»˜è®¤TCP
+    lfd = socket(AF_INET, SOCK_STREAM, 0);		    //åˆ›å»ºä¸€ä¸ª socket
     if (lfd == -1) {
         sys_err("socket error");
     }
 
-    bind(lfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr));//¸ø·şÎñÆ÷socket°ó¶¨µØÖ·½á¹¹£¨IP+port)
+    bind(lfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr));    //ç»™æœåŠ¡å™¨socketç»‘å®šåœ°å€ç»“æ„ï¼ˆIP+port)
 
-    listen(lfd, 128);					//	ÉèÖÃ¼àÌıÉÏÏŞ
+    listen(lfd, 128);					//	è®¾ç½®ç›‘å¬ä¸Šé™
 
-    clit_addr_len = sizeof(clit_addr);	// 	»ñÈ¡¿Í»§¶ËµØÖ·½á¹¹´óĞ¡
+    clit_addr_len = sizeof(clit_addr);  // 	è·å–å®¢æˆ·ç«¯åœ°å€ç»“æ„å¤§å°
 
-    cfd = accept(lfd, (struct sockaddr *)&clit_addr, &clit_addr_len);	// ×èÈûµÈ´ı¿Í»§¶ËÁ¬½ÓÇëÇó
+    cfd = accept(lfd, (struct sockaddr *)&clit_addr, &clit_addr_len);	// é˜»å¡ç­‰å¾…å®¢æˆ·ç«¯è¿æ¥è¯·æ±‚
+    
     if (cfd == -1)
         sys_err("accept error");
 
     printf("client ip:%s port:%d\n", 
             inet_ntop(AF_INET, &clit_addr.sin_addr.s_addr, client_IP, sizeof(client_IP)), 
-            ntohs(clit_addr.sin_port));			// ¸ù¾İaccept´«³ö²ÎÊı£¬»ñÈ¡¿Í»§¶Ë ip ºÍ port
+            ntohs(clit_addr.sin_port));			// æ ¹æ®acceptä¼ å‡ºå‚æ•°ï¼Œè·å–å®¢æˆ·ç«¯ ip å’Œ port
 
     while (1) {
-        ret = read(cfd, buf, sizeof(buf));		// ¶Á¿Í»§¶ËÊı¾İ
-        write(STDOUT_FILENO, buf, ret);			// Ğ´µ½ÆÁÄ»²é¿´
+        ret = read(cfd, buf, sizeof(buf));		// è¯»å®¢æˆ·ç«¯æ•°æ®
+        write(STDOUT_FILENO, buf, ret);			// å†™åˆ°å±å¹•æŸ¥çœ‹
 
-        for (i = 0; i < ret; i++)				// Ğ¡Ğ´ -- ´óĞ´
+        for (i = 0; i < ret; i++)				// å°å†™ -- å¤§å†™
             buf[i] = toupper(buf[i]);
 
-        write(cfd, buf, ret);					// ½«´óĞ´£¬Ğ´»Ø¸ø¿Í»§¶Ë¡£
+        write(cfd, buf, ret);					// å°†å¤§å†™ï¼Œå†™å›ç»™å®¢æˆ·ç«¯ã€‚
     }
 
     close(lfd);
