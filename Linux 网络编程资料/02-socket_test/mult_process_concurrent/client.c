@@ -16,12 +16,13 @@ int main(int argc, char *argv[])
     char buf[MAXLINE];
     int sockfd, n;
 
+    // IPv4 流
     sockfd = Socket(AF_INET, SOCK_STREAM, 0);
 
     bzero(&servaddr, sizeof(servaddr));
-    servaddr.sin_family = AF_INET;
-    inet_pton(AF_INET, "127.0.0.1", &servaddr.sin_addr);
-    servaddr.sin_port = htons(SERV_PORT);
+    servaddr.sin_family = AF_INET;                          // IPv4
+    inet_pton(AF_INET, "127.0.0.1", &servaddr.sin_addr);    // IP 地址
+    servaddr.sin_port = htons(SERV_PORT);                   // 端口号
 
     Connect(sockfd, (struct sockaddr *)&servaddr, sizeof(servaddr));
 
