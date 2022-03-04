@@ -16,8 +16,10 @@ void timeout_cb( int fd, short event, void* argc )
 
 int main()  
 {  
+    // 调用event_init函数创建event_base对象。一个event_base相当于一个Reactor实例
     struct event_base* base = event_init();
 
+    // 创建具体的事件处理器，并设置它们所从属的Reactor实例。evsignal_new和evtimer_new分别用于创建信号事件处理器和定时事件处理器
     struct event* signal_event = evsignal_new( base, SIGINT, signal_cb, base );
     event_add( signal_event, NULL );
 
