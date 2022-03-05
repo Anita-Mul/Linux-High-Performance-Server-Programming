@@ -6,6 +6,10 @@
 
 #define SERV_PORT 8000
 
+/**
+ * ssize_t recvfrom(int sockfd,void*buf,size_t len,int flags,structsockaddr*src_addr,socklen_t*addrlen);
+ * ssize_t sendto(int sockfd,const void*buf,size_t len,intflags,const struct sockaddr*dest_addr,socklen_t addrlen);
+ */
 int main(int argc, char *argv[])
 {
     struct sockaddr_in servaddr;

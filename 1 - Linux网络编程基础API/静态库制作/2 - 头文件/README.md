@@ -1,6 +1,0 @@
- - gcc -c add.c -o add.o
- - gcc -c sub.c -o sub.o
- - gcc -c div1.c -o div1.o
- - ar rcs libmymath.a add.o sub.o div1.o
- - gcc test.c libmymath.a -o test
- - ./test

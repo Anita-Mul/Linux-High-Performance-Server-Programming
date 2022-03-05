@@ -20,7 +20,6 @@ typedef struct {
 } threadpool_task_t;                    /* 各子线程任务结构体 */
 
 /* 描述线程池相关信息 */
-
 struct threadpool_t {
     pthread_mutex_t lock;               /* 用于锁住本结构体 */    
     pthread_mutex_t thread_counter;     /* 记录忙状态线程个数de琐 -- busy_thr_num */
